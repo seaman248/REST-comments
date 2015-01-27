@@ -21,7 +21,7 @@ var commentSchema = new mongoose.Schema({
 });
 
 var Comment = mongoose.model('Comment', commentSchema);
-
+/*
 for (var i=0, max = 100; i<=max; i++){
 	(function(e){
 		var comment = new Comment({
@@ -34,3 +34,6 @@ for (var i=0, max = 100; i<=max; i++){
 		});
 	})(i);
 }
+
+*/
+module.exports.Comment = Comment;
