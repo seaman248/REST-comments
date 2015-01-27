@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/comments');
+mongoose.connect('mongodb://localhost/api_blog')
+	var db = mongoose.connection;
+	db.on('error', console.error.bind(console, 'connection error:'));
 
 var commentSchema = new mongoose.Schema({
 	author: {
@@ -19,3 +21,16 @@ var commentSchema = new mongoose.Schema({
 });
 
 var Comment = mongoose.model('Comment', commentSchema);
+
+for (var i=0, max = 100; i<=max; i++){
+	(function(e){
+		var comment = new Comment({
+			author: 'Seaman ' + e,
+			text: 'Its awesome ' + e
+		});
+		comment.save(function(err, comment){
+			if (err) console.log(err);
+			if (e<5) console.log(comment.date);
+		});
+	})(i);
+}
