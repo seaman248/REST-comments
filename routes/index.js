@@ -1,12 +1,11 @@
 var express = require('express');
 var router = express.Router();
-
+var Comment = require('../model').Comment;
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.json({
-  	title: 'Something',
-  	posts: [{title1: 'title1'},{title1: 'title1'},{title1: 'title1'},{title1: 'title1'},{title1: 'title1'}]
-  })
+	Comment.find(function(err, result){
+		res.json(result);
+	});
 });
 
 module.exports = router;
