@@ -19,4 +19,18 @@ router.get('/comments/:id', function(req, res) {
 	});
 });
 
+router.post('/comments/:id', function(req, res){
+	var comment = new Comment();
+	comment.save(function(err, comment){
+		if(err) {
+			res.json({
+				status: err;
+			});
+		}
+		res.json({
+			status: 'OK'
+		});
+	});
+});
+
 module.exports = router;
