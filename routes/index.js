@@ -20,7 +20,7 @@ router.get('/comments/:id', function(req, res) {
 });
 
 router.post('/comments/:id', function(req, res){
-	var comment = new Comment();
+	var comment = new Comment(req.body);
 	comment.save(function(err, comment){
 		if(err) {
 			res.json({
