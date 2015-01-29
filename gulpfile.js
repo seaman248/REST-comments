@@ -17,7 +17,7 @@ gulp.task('browserify', function(){
 		.pipe(gulp.dest('./public/js'))
 });
 
-gulp.task('watch',['react', 'browserify'] function(){
+gulp.task('watch',['react', 'browserify'], function(){
 	gulp.watch('./JScli/jsx/**/*.js', ['react' ,'browserify']);
 	gulp.watch('./JScli/js/**/*.js', ['browserify']);
 })
