@@ -12,7 +12,8 @@ gulp.task('react', function(){
 gulp.task('browserify', function(){
 	gulp.src('./JScli/js/**/*.js')
 		.pipe(browserify({
-			insertGlobals: true
+			insertGlobals: true,
+			debug : true
 		}))
 		.pipe(gulp.dest('./public/js'))
 });
