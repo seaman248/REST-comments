@@ -24,7 +24,7 @@ router.post('/comments/:id', function(req, res){
 	comment.save(function(err, comment){
 		if(err) {
 			res.json({
-				status: err;
+				status: err,
 			});
 		}
 		res.json({
