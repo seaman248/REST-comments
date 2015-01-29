@@ -2,14 +2,16 @@
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var React = require('react');
 
-var C = React.createClass({displayName: "C",
+var CommentList = React.createClass({displayName: "CommentList",
 	render: function(){
-		return (React.createElement("h1", null, "asdf"));
+		return (
+			React.createElement("h1", null, "Comments")
+			);
 	}
 });
 
-React.render(React.createElement(C, null), document.getElementById('comment_app'));
-}).call(this,require("oMfpAn"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_dc1c8819.js","/")
+React.render(React.createElement(CommentList, null), document.getElementById('comment_app'));
+}).call(this,require("oMfpAn"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_194f0189.js","/")
 },{"buffer":2,"oMfpAn":5,"react":151}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!

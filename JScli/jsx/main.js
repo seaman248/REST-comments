@@ -1,9 +1,11 @@
 var React = require('react');
 
-var C = React.createClass({
+var CommentList = React.createClass({
 	render: function(){
-		return (<h1>asdf</h1>);
+		return (
+			<h1>Comments</h1>
+			);
 	}
 });
 
-React.render(<C />, document.getElementById('comment_app'));
+React.render(<CommentList />, document.getElementById('comment_app'));
