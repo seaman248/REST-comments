@@ -62,10 +62,7 @@ var CommentForm = React.createClass({
 })
 
 var Comments = React.createClass({
-	getInitialState: function(){
-		return {data: []}
-	},
-	componentDidMount: function(){
+	loadComments: function(){
 		$.ajax({
 			url: '/comments',
 			dataType: 'json',
@@ -75,7 +72,14 @@ var Comments = React.createClass({
 			error: function(xhr, status, err){
 				console.error('/comments', status, err.toString());
 			}.bind(this)
-		})
+		});
+	},
+	getInitialState: function(){
+		return {data: []}
+	},
+	componentDidMount: function(){
+		this.loadComments();
+		setInterval(this.loadComments, 5000);
 	},
 	render: function(){
 		var commentsStyle = {
