@@ -46,6 +46,7 @@ var CommentForm = React.createClass({
 		if (!text || !author){
 			return;
 		}
+		this.props.onCommentSubmit({author: author, text: text});
 		this.refs.author.getDOMNode().value = '';
 		this.refs.text.getDOMNode().value = '';
 		return;
@@ -81,6 +82,21 @@ var Comments = React.createClass({
 		this.loadComments();
 		setInterval(this.loadComments, 5000);
 	},
+	handleCommentSubmit: function(comment){
+		$.ajax({
+			url: '/comments',
+			dataType: 'json',
+			type: 'POST',
+			data: comment,
+			success: function(data){
+				console.log(data);
+				this.loadComments();
+			}.bind(this),
+			error: function(xhr, status, err){
+				console.error('/comments', status, err.toString());
+			}
+		})
+	},
 	render: function(){
 		var commentsStyle = {
 			padding: '20px'
@@ -88,7 +104,7 @@ var Comments = React.createClass({
 		return (
 			<div style={commentsStyle} >
 				<h1>Comments</h1>
-				<CommentForm />
+				<CommentForm onCommentSubmit={this.handleCommentSubmit} />
 				<CommentList data={this.state.data} />
 			</div>
 			);

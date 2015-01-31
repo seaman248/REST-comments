@@ -10,6 +10,7 @@ router.get('/comments', function(req, res){
 	Comment
 		.find()
 		.limit(10)
+		.sort({date: -1})
 		.exec(function(err, result){
 		res.json(result);
 	});
@@ -23,7 +24,7 @@ router.get('/comments/:id', function(req, res) {
 	});
 });
 
-router.post('/comments/:id', function(req, res){
+router.post('/comments', function(req, res){
 	var comment = new Comment(req.body);
 	comment.save(function(err, comment){
 		if(err) {

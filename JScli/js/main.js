@@ -46,6 +46,7 @@ var CommentForm = React.createClass({displayName: "CommentForm",
 		if (!text || !author){
 			return;
 		}
+		this.props.onCommentSubmit({author: author, text: text});
 		this.refs.author.getDOMNode().value = '';
 		this.refs.text.getDOMNode().value = '';
 		return;
@@ -81,6 +82,21 @@ var Comments = React.createClass({displayName: "Comments",
 		this.loadComments();
 		setInterval(this.loadComments, 5000);
 	},
+	handleCommentSubmit: function(comment){
+		$.ajax({
+			url: '/comments',
+			dataType: 'json',
+			type: 'POST',
+			data: comment,
+			success: function(data){
+				console.log(data);
+				this.loadComments();
+			}.bind(this),
+			error: function(xhr, status, err){
+				console.error('/comments', status, err.toString());
+			}
+		})
+	},
 	render: function(){
 		var commentsStyle = {
 			padding: '20px'
@@ -88,7 +104,7 @@ var Comments = React.createClass({displayName: "Comments",
 		return (
 			React.createElement("div", {style: commentsStyle}, 
 				React.createElement("h1", null, "Comments"), 
-				React.createElement(CommentForm, null), 
+				React.createElement(CommentForm, {onCommentSubmit: this.handleCommentSubmit}), 
 				React.createElement(CommentList, {data: this.state.data})
 			)
 			);
