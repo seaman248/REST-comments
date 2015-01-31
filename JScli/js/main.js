@@ -1,4 +1,6 @@
 var React = require('react');
+var $ = require('jquery');
+
 
 var Comment = React.createClass({displayName: "Comment",
 	render: function(){
@@ -41,4 +43,4 @@ var Comments = React.createClass({displayName: "Comments",
 	}
 });
 
-React.render(React.createElement(Comments, null), document.getElementById('comment_app'));
+React.render(React.createElement(Comments, null), document.body);
