@@ -7,10 +7,14 @@ router.get('/', function(req, res) {
 });
 
 router.get('/comments', function(req, res){
-	Comment.find(function(err, result){
+	Comment
+		.find()
+		.limit(10)
+		.exec(function(err, result){
 		res.json(result);
 	});
-})
+});
+
 
 router.get('/comments/:id', function(req, res) {
 	console.log(req.body);

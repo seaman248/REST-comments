@@ -40,22 +40,19 @@ var CommentList = React.createClass({
 
 var Comments = React.createClass({
 	getInitialState: function(){
-		return {data: [
-			 {
-    "_id": "54c789208bec42756ffd1741",
-    "author": "Seaman",
-    "text": "Its awesome",
-    "__v": 0,
-    "date": "2015-01-27T12:48:32.474Z"
-  },
-  {
-    "_id": "54c789af4fba63cb6f44d982",
-    "author": "Seaman 0",
-    "text": "Its awesome 0",
-    "__v": 0,
-    "date": "2015-01-27T12:50:55.966Z"
-  }
-			]}
+		return {data: []}
+	},
+	componentDidMount: function(){
+		$.ajax({
+			url: '/comments',
+			dataType: 'json',
+			success: function(data){
+				this.setState({data: data});
+			}.bind(this),
+			error: function(xhr, status, err){
+				console.error('/comments', status, err.toString());
+			}.bind(this)
+		})
 	},
 	render: function(){
 		var commentsStyle = {
