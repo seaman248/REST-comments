@@ -83,6 +83,9 @@ var Comments = React.createClass({
 		setInterval(this.loadComments, 5000);
 	},
 	handleCommentSubmit: function(comment){
+		var comments = this.state.data;
+		var newComments = comments.concat([comment]);
+		this.setState({data: newComments});
 		$.ajax({
 			url: '/comments',
 			dataType: 'json',
