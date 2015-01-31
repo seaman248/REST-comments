@@ -38,6 +38,29 @@ var CommentList = React.createClass({displayName: "CommentList",
 	}
 });
 
+var CommentForm = React.createClass({displayName: "CommentForm",
+	handleSubmit: function(e){
+		e.preventDefault();
+		var author = this.refs.author.getDOMNode().value.trim();
+		var text = this.refs.text.getDOMNode().value.trim();
+		if (!text || !author){
+			return;
+		}
+		this.refs.author.getDOMNode().value = '';
+		this.refs.text.getDOMNode().value = '';
+		return;
+	},
+	render: function(){
+		return (
+			React.createElement("form", {className: "commentForm", onSubmit: this.handleSubmit}, 
+				React.createElement("input", {type: "text", placeholder: "Your name", ref: "author"}), 
+				React.createElement("input", {type: "text", placeholder: "Your message", ref: "text"}), 
+				React.createElement("input", {type: "submit", value: "Submit"})
+			)
+			)
+	}
+})
+
 var Comments = React.createClass({displayName: "Comments",
 	getInitialState: function(){
 		return {data: []}
@@ -61,6 +84,7 @@ var Comments = React.createClass({displayName: "Comments",
 		return (
 			React.createElement("div", {style: commentsStyle}, 
 				React.createElement("h1", null, "Comments"), 
+				React.createElement(CommentForm, null), 
 				React.createElement(CommentList, {data: this.state.data})
 			)
 			);
