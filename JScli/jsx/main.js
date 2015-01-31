@@ -15,9 +15,9 @@ var Comment = React.createClass({
 		}
 		return (
 			<div style={commentListStyle} > 
-				<h2> {this.props.author} </h2>
-				<p> {this.props.text} </p>
-				<span style={date_style} > {this.props.date} </span>
+				<h2> {this.props.data.author} </h2>
+				<p> {this.props.data.text} </p>
+				<span style={date_style} > {this.props.data.date} </span>
 			</div>
 			);
 	}
@@ -25,11 +25,38 @@ var Comment = React.createClass({
 
 var CommentList = React.createClass({
 	render: function(){
-		return (<Comment author='Seaman' text='Lorem ipsum dolor sit.' date='2015-01-27T12:48:32.474Z' />);
+		var commentNodes = this.props.data.map(function(comment){
+			return (
+				<Comment data={comment} />
+				)
+		})
+		return (
+			<div className='commentList'>
+			{commentNodes}
+			</div>
+			);
 	}
 });
 
 var Comments = React.createClass({
+	getInitialState: function(){
+		return {data: [
+			 {
+    "_id": "54c789208bec42756ffd1741",
+    "author": "Seaman",
+    "text": "Its awesome",
+    "__v": 0,
+    "date": "2015-01-27T12:48:32.474Z"
+  },
+  {
+    "_id": "54c789af4fba63cb6f44d982",
+    "author": "Seaman 0",
+    "text": "Its awesome 0",
+    "__v": 0,
+    "date": "2015-01-27T12:50:55.966Z"
+  }
+			]}
+	},
 	render: function(){
 		var commentsStyle = {
 			padding: '20px'
@@ -37,7 +64,7 @@ var Comments = React.createClass({
 		return (
 			<div style={commentsStyle} >
 				<h1>Comments</h1>
-				<CommentList />
+				<CommentList data={this.state.data} />
 			</div>
 			);
 	}
