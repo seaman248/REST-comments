@@ -56,7 +56,8 @@ var CommentForm = React.createClass({
 			backgroundColor: '#3F92FF',
 			width: '100%',
 			padding: '20px',
-			margin: '20px none'
+			margin: '20px none',
+			borderRadius: '5px'
 		};
 
 		var textInputCommentFormStyle = {
