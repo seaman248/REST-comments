@@ -52,10 +52,22 @@ var CommentForm = React.createClass({displayName: "CommentForm",
 		return;
 	},
 	render: function(){
+		var commentFormStyle = {
+			backgroundColor: '#3F92FF',
+			width: '100%',
+			padding: '20px',
+			margin: '20px none'
+		};
+
+		var textInputCommentFormStyle = {
+			width: '100%',
+			marginBottom: '10px',
+			fontSize: '1.3em'
+		}
 		return (
-			React.createElement("form", {className: "commentForm", onSubmit: this.handleSubmit}, 
-				React.createElement("input", {type: "text", placeholder: "Your name", ref: "author"}), 
-				React.createElement("input", {type: "text", placeholder: "Your message", ref: "text"}), 
+			React.createElement("form", {className: "commentForm", onSubmit: this.handleSubmit, style: commentFormStyle}, 
+				React.createElement("input", {style: textInputCommentFormStyle, type: "text", placeholder: "Your name", ref: "author"}), 
+				React.createElement("textarea", {rows: "5", style: textInputCommentFormStyle, type: "text", placeholder: "Your message", ref: "text"}), 
 				React.createElement("input", {type: "submit", value: "Submit"})
 			)
 			)
