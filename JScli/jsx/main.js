@@ -62,13 +62,22 @@ var CommentForm = React.createClass({
 		var textInputCommentFormStyle = {
 			width: '100%',
 			marginBottom: '10px',
-			fontSize: '1.3em'
+			fontSize: '1.3em',
+
+		};
+
+		var submitStyle = {
+			fontSize: '1.3em',
+			backgroundColor: 'white',
+			border: 'none',
+			padding: '10px',
+			borderRadius: '5px'
 		}
 		return (
 			<form className='commentForm' onSubmit={this.handleSubmit} style={commentFormStyle} >
 				<input style={textInputCommentFormStyle} type='text' placeholder='Your name' ref='author' />
 				<textarea rows='5' style={textInputCommentFormStyle} type='text' placeholder='Your message' ref='text' />
-				<input type='submit' value='Submit' />
+				<input style={submitStyle} type='submit' value='Submit' />
 			</form>
 			)
 	}
