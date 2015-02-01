@@ -9,8 +9,8 @@ router.get('/', function(req, res) {
 router.get('/comments', function(req, res){
 	Comment
 		.find()
-		.limit(10)
 		.sort({date: -1})
+		.limit(20)
 		.exec(function(err, result){
 		res.json(result);
 	});
