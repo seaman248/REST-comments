@@ -1,8 +1,8 @@
 var gulp = require('gulp');
 var browserify = require('gulp-browserify');
 var react = require('gulp-react');
-
-
+var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
 gulp.task('react', function(){
 	gulp.src('./JScli/jsx/**/*.js')
 		.pipe(react())
@@ -15,6 +15,8 @@ gulp.task('browserify', function(){
 			insertGlobals: true,
 			debug : true
 		}))
+		.pipe(rename('main.js'))
+		.pipe(uglify())
 		.pipe(gulp.dest('./public/js'))
 });
 
