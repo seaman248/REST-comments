@@ -59,3 +59,4 @@ var pagesSchema = new mongoose.Schema({
 })
 
 var Page = mongoose.model('Page', pagesSchema);
+module.exports.Pages = Page;

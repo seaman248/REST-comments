@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Comment = require('../model').Comment;
+var Pages = require('../model').Pages;
 /* GET comments*/
 router.get('/', function(req, res) {
 	res.render('index');
@@ -37,5 +38,11 @@ router.post('/comments', function(req, res){
 		});
 	});
 });
+
+router.get('/pages', function(req,res){
+	Pages.find(function(err, result){
+		res.json(result);
+	})
+})
 
 module.exports = router;
