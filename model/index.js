@@ -37,3 +37,25 @@ for (var i=0, max = 100; i<=max; i++){
 
 */
 module.exports.Comment = Comment;
+
+/**
+*	Menu
+*/
+
+var pagesSchema = new mongoose.Schema({
+	name: {
+		type: String,
+		require: true
+	},
+	app_name: {
+		type: String,
+		require: true
+	},
+	link: {
+		type: String,
+		require: true
+	},
+
+})
+
+var Page = mongoose.model('Page', pagesSchema);
