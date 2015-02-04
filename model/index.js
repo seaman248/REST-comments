@@ -47,10 +47,6 @@ var pagesSchema = new mongoose.Schema({
 		type: String,
 		require: true
 	},
-	app_name: {
-		type: String,
-		require: true
-	},
 	link: {
 		type: String,
 		require: true
