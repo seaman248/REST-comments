@@ -136,4 +136,4 @@ var Comments = React.createClass({displayName: "Comments",
 	}
 });
 
-React.render(React.createElement(Comments, null), document.body);
+module.exports = Comments;

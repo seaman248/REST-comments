@@ -136,4 +136,4 @@ var Comments = React.createClass({
 	}
 });
 
-React.render(<Comments />, document.body);
+module.exports = Comments;
