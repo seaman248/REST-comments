@@ -16,7 +16,7 @@ gulp.task('browserify', function(){
 			debug : true
 		}))
 		.pipe(rename('main.js'))
-		.pipe(uglify())
+		// .pipe(uglify())
 		.pipe(gulp.dest('./public/js'))
 });
 
