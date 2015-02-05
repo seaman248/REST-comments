@@ -21,8 +21,8 @@ var Router = Backbone.Router.extend({
 	}
 });
 
-var router = new Router();
+// var router = new Router();
 
-Backbone.history.start();
+// Backbone.history.start();
 
-console.log(router);
+// console.log(router);
